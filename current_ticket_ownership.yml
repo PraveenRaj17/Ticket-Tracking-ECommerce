@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: current_ticket_ownership
+     
+    columns:
+      ticket_id: {unique: true}
+      
+    config:
+      materialized: incremental
+      strategy: incremental
+      unique_key: [ticket_id]
+
+    tests:
+      - name: completeness_check
+        description: Ensure all required fields are populated in the ticket ownership table.
+        severity: error
+        assertion: not_null(column)
+        columns:
+          - ticket_id
+          - event_id
+          - account_id
+          - activity_date
+          - is_original_ticket_holder
+          
+
+      - name: uniqueness_check
+        description: Ensure that the ticket_id is unique in the ticket ownership table.
+        severity: error
+        assertion: unique(ticket_id)
+
+      - name: validity_check_is_original_ticket_holder
+        description: Validate the values of is_original_ticket_holder field.
+        severity: error
+        assert:
+          accepted_values: [true, false]
+          column: is_active
+
+      - name: validity_check_email_format
+        description: Validate the format of email addresses.
+        severity: warning
+        assertion: email_like(email)
+
+      - name: validity_check_mailing_address_completeness
+        description: Ensure completeness of mailing address fields.
+        severity: warning
+        assertion: not_null(mailing_address) and not_null(mailing_city) and not_null(mailing_state) and not_null(mailing_zip)
