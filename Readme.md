@@ -23,7 +23,10 @@ The system focuses on tracking changes in ticket ownership, including purchases,
 2. Install dbt following the [official documentation](https://docs.getdbt.com/docs/installation)
 3. Set up your dbt profile with connection details for your data warehouse (e.g., Snowflake)
 4. Run the dbt project to generate the ticket ownership tracking model:
+   
+   ```bash
    dbt run
+   
 5. Explore the generated model and reports in your data warehouse or analytics platform.
 
 ## Data Quality Checks
