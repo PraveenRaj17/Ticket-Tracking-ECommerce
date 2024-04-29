@@ -4,7 +4,7 @@ This project implements a ticket ownership tracking system using dbt (data build
 
 ## Project Overview
 
-The system focuses on tracking changes in ticket ownership, including purchases, resales, and transfers, to provide insights into fan behavior and optimize engagement strategies. It leverages dbt for data modeling, SQL for querying, and Jinja templating for dynamic code generation.
+The system focuses on tracking changes in ticket ownership, including purchases, resales, and transfers, to provide insights into fan behavior and optimize engagement strategies. It leverages dbt for data modeling, SQL for querying, and Jinja templating for dynamic code generation. Please refer to 'data_definitions.md' for more intricate details.
 
 ## Key Features
 
@@ -26,7 +26,7 @@ The system focuses on tracking changes in ticket ownership, including purchases,
    
    ```bash
    dbt run
-   
+
 5. Explore the generated model and reports in your data warehouse or analytics platform.
 
 ## Data Quality Checks
